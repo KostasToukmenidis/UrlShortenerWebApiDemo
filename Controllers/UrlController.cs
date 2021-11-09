@@ -1,15 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UrlShortener.Dtos;
+﻿using Microsoft.AspNetCore.Mvc;
 using UrlShortener.Interfaces;
-using UrlShortener.Models;
-using UrlShortener.Services;
-using UrlShortener.TestRepository;
-using URLShortener.Services;
+
 
 namespace UrlShortener.Controllers
 {
