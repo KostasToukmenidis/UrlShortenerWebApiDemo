@@ -18,12 +18,12 @@ namespace UrlShortener.Controllers
         }
 
         [HttpPost]
-        public ActionResult<string> Post(string longUrl)
+        public ActionResult<string> Post(string passedUrl)
         {
-            if (string.IsNullOrEmpty(longUrl))
+            if (string.IsNullOrEmpty(passedUrl))
                 return NotFound();
 
-            longUrl.UrlCorrect();
+            var longUrl = passedUrl.UrlCorrect();
 
             if (ModelState.IsValid)
             {

@@ -14,6 +14,7 @@ namespace URLShortener.Services
             _context = context;
         }
 
+        //Adding a row in Urls Table & creating the short url that I need for my Api
         public Url ShortenUrl(string longUrl)
         {
             string token = GenerateToken();
@@ -36,6 +37,7 @@ namespace URLShortener.Services
             return url;
         }
 
+        //Generating the token that will make the short url Unique
         public string GenerateToken()
         {
             for (int i = 0; i < 10; i++)
