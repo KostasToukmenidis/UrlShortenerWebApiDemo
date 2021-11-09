@@ -19,5 +19,15 @@ namespace UrlShortener
                 Token = url.Token
             };
         }
+
+        public static string UrlCorrect(this string longUrl)
+        {
+            if (!longUrl.StartsWith("http://www.") && !longUrl.Contains("www."))
+                longUrl = "http://www." + longUrl;
+            else if (longUrl.StartsWith("www."))
+                longUrl = "http://" + longUrl;
+
+            return longUrl;
+        }
     }
 }

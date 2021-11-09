@@ -6,19 +6,18 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UrlShortener.Data;
+using UrlShortener.Interfaces;
 using UrlShortener.Models;
 using UrlShortener.Services;
 
 namespace URLShortener.Services
 {
-    public class UrlManager
+    public class UrlManager : IUrlManager
     {
         private readonly UrlShortenerDb _context;
-        private StatManager _stat;
-        public UrlManager(UrlShortenerDb context, StatManager stat)
+        public UrlManager(UrlShortenerDb context)
         {
             _context = context;
-            _stat = stat;
         }
 
         public Url ShortenUrl(string longUrl)
@@ -43,9 +42,9 @@ namespace URLShortener.Services
             return url;
         }
 
-        private string GenerateToken()
+        public string GenerateToken()
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 10; i++)
             {
                 string token = Guid.NewGuid().ToString().Substring(0, 9);
                 if (!_context.Urls.Any(u => u.Token == token))

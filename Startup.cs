@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UrlShortener.Data;
+using UrlShortener.Interfaces;
 using UrlShortener.Services;
 using UrlShortener.TestRepository;
 using URLShortener.Services;
@@ -36,10 +37,11 @@ namespace UrlShortener
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddTransient<UrlManager>();
-            services.AddTransient<StatManager>();
+            services.AddTransient<IUrlManager, UrlManager>();
 
-            services.AddSingleton<IUrlRepositoryTest, UrlRepositoryTest>();
+            services.AddTransient<IStatManager, StatManager>();
+
+            //services.AddSingleton<IUrlRepositoryTest, UrlRepositoryTest>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

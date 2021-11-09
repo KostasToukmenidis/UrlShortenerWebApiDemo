@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UrlShortener.Data;
+using UrlShortener.Interfaces;
 using UrlShortener.Models;
 
 namespace UrlShortener.Services
 {
-    public class StatManager
+    public class StatManager :IStatManager
     {
         private readonly UrlShortenerDb _context;
         public StatManager(UrlShortenerDb context)
